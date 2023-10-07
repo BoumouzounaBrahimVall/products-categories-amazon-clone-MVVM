@@ -1,0 +1,40 @@
+﻿@page
+@model MonCatalogueProduit.Pages.Categories.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<a class="btn btn-primary" asp-page="Create">Create New</a>
+
+<div class="row">
+    <h2>Categories</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Categorie[0].CategorieID)</th>
+                <th>@Html.DisplayNameFor(model => model.Categorie[0].NomCategorie)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Categorie)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.CategorieID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NomCategorie)</td>
+                   
+
+                    <td>
+                        <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.CategorieID">Edit</a>
+                        <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.CategorieID">Details</a>
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.CategorieID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

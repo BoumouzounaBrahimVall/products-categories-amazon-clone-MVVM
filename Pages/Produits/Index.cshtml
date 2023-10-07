@@ -1,0 +1,43 @@
+﻿@page
+@model MonCatalogueProduit.Pages.Produits.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Listes Des Produits</h1>
+
+
+    <a class="btn btn-primary" asp-page="Create">Create New</a>
+
+
+<div class="row">
+    <h2>Produits</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Produit[0].Description)</th>
+                <th>@Html.DisplayNameFor(model => model.Produit[0].Prix)</th>
+                <th>@Html.DisplayNameFor(model => model.Produit[0].Quantite)</th>
+                <th>@Html.DisplayNameFor(model => model.Produit[0].Categorie)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Produit)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prix)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Quantite)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Categorie.NomCategorie)</td>
+                    <td>
+                        <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.ProduitID">Edit</a>
+                        <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.ProduitID">Details</a>
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.ProduitID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
